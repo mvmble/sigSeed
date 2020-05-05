@@ -37,7 +37,7 @@ class Game:
         self.boost = 0
         self.platformCounter = 0
 
-        backgroundImage = pygame.image.load('./img/background.png')
+        backgroundImage = pygame.image.load('../img/background.png')
 
         self.background = pygame.transform.scale(backgroundImage,
                                                  (int(backgroundImage.get_size()[0]*8), int(backgroundImage.get_size()[1]*8)))
@@ -70,14 +70,14 @@ class Game:
             self.playing = True
             if self.inMenu:
                 pygame.mixer.Channel(0).play(
-                    pygame.mixer.Sound('./sound/home.ogg'), loops=-1)
+                    pygame.mixer.Sound('../sound/home.ogg'), loops=-1)
             while self.inMenu and self.running:
                 self.menu.draw()
                 self.menu.update()
             if self.firstTime:
                 self.firstTime = False
                 pygame.mixer.Channel(0).play(
-                    pygame.mixer.Sound('sound/game.ogg'), loops=-1)
+                    pygame.mixer.Sound('../sound/game.ogg'), loops=-1)
             while self.playing:
                 self.events()
                 self.update()
@@ -123,7 +123,7 @@ class Game:
                 self.sprites.add(s)
         if takeSeed:
             pygame.mixer.Channel(1).play(
-                pygame.mixer.Sound('./sound/tick.ogg'))
+                pygame.mixer.Sound('../sound/tick.ogg'))
             self.player.seedCounter += 1
             takeSeed[0].kill()
             del takeSeed[0]
@@ -140,7 +140,7 @@ class Game:
                 if not self.player.lastTouched.p:
                     self.player.lastTouched.p = True
                     pygame.mixer.Channel(2).play(
-                        pygame.mixer.Sound('./sound/p.wav'))
+                        pygame.mixer.Sound('../sound/p.wav'))
                 if pygame.time.get_ticks() - self.player.lastTouched.time >= 300:
                     self.player.lastTouched.kill()
                     self.platformCounter -= 1
@@ -191,7 +191,7 @@ class Game:
                         if self.player.lastTouched and self.player.lastTouched.time and pygame.time.get_ticks() - self.player.lastTouched.time <= 300:
                             if not self.player.lastTouched.seeded:
                                 pygame.mixer.Channel(1).play(
-                                    pygame.mixer.Sound('./sound/seed.wav'))
+                                    pygame.mixer.Sound('../sound/seed.wav'))
                                 self.player.lastTouched.seeded = True
                                 self.player.lastTouched.sow()
                                 self.score += 4
@@ -206,7 +206,7 @@ class Game:
                     if self.boost and not self.noAbuse:
                         if self.platformTouched >= 3:
                             pygame.mixer.Channel(1).play(
-                                pygame.mixer.Sound('./sound/boost.ogg'))
+                                pygame.mixer.Sound('../sound/boost.ogg'))
                             self.noAbuse = True
                             self.boost -= 1
                             self.player.vel.y -= 20

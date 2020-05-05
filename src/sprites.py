@@ -11,10 +11,10 @@ class Player(pygame.sprite.Sprite):
         self.game = game
         self.images = []
         self.images_right = []
-        self.images_right.append(pygame.image.load("./img/p0.png"))
-        self.images_right.append(pygame.image.load("./img/p1.png"))
-        self.images_right.append(pygame.image.load("./img/p2.png"))
-        self.images_right.append(pygame.image.load("./img/p3.png"))
+        self.images_right.append(pygame.image.load("../img/p0.png"))
+        self.images_right.append(pygame.image.load("../img/p1.png"))
+        self.images_right.append(pygame.image.load("../img/p2.png"))
+        self.images_right.append(pygame.image.load("../img/p3.png"))
         self.images_right = [pygame.transform.scale(
             image, (int(image.get_size()[0]/2), int(image.get_size()[1]/2))) for image in self.images_right]
         self.ctime = 0
@@ -95,7 +95,7 @@ class Platform(pygame.sprite.Sprite):
 class Seed(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("./img/seed.png").convert()
+        self.image = pygame.image.load("../img/seed.png").convert()
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -117,7 +117,7 @@ class Tree(pygame.sprite.Sprite):
             self.state += 1
             self.ctime = 0
         self.image = pygame.image.load(
-            "./img/tree/" + str(self.state) + ".png").convert_alpha()
+            "../img/tree/" + str(self.state) + ".png").convert_alpha()
         self.size = self.image.get_size()
         self.image = pygame.transform.scale(
             self.image, (int(self.size[0]*4), int(self.size[1]*4)))
